@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { createConnection, Connection } from 'typeorm';
+import { createConnection, Connection, CustomRepositoryCannotInheritRepositoryError } from 'typeorm';
 
 @Component({
   selector: 'app-type-orm',
@@ -13,12 +13,7 @@ export class TypeOrmComponent implements OnInit {
   ngOnInit(): void {
   }
 
-const connection = await createConnection({
-type:"postgres",
-host: "localhost",
-port:"5432",
-username:"jane-doe",
-password:"1234",
-database:"jane-db"
-});
+
+const myUser = await respository.findOne({where: {name:"Troy"}});
+await respository.delete(mymUser.id);
 }
